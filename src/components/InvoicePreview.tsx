@@ -436,8 +436,8 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                     <tr key={item.id} className="border-b border-gray-200">
                       <td className="p-3 text-base">{item.description}</td>
                       <td className="p-3 text-center text-base">{item.quantity}</td>
-                      <td className="p-3 text-right text-base">${item.rate.toFixed(2)}</td>
-                      <td className="p-3 text-right text-base">${(item.quantity * item.rate).toFixed(2)}</td>
+                      <td className="p-3 text-right text-base">R{item.rate.toFixed(2)}</td>
+                      <td className="p-3 text-right text-base">R{(item.quantity * item.rate).toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -449,11 +449,11 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
               <div className="w-64">
                 <div className="flex justify-between mb-2 pb-2">
                   <span className="text-gray-600 text-base">Subtotal:</span>
-                  <span className="text-base">${currentInvoice.subtotal.toFixed(2)}</span>
+                  <span className="text-base">R{currentInvoice.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between border-t-2 border-[#f5a623] pt-2">
                   <span className="text-xl font-semibold">Total:</span>
-                  <span className="text-2xl text-[#f5a623] font-bold">${currentInvoice.total.toFixed(2)}</span>
+                  <span className="text-2xl text-[#f5a623] font-bold">R{currentInvoice.total.toFixed(2)}</span>
                 </div>
               </div>
             </div>
