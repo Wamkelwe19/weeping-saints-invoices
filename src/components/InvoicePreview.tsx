@@ -182,7 +182,7 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                 <div class="company-name">WEEPING SAINTS</div>
                 <div class="tagline">PR & Marketing House - Gracefully Building Unforgettable Brands</div>
                 <div class="contact-info">
-                  info@weepingsaints.com | +1 (555) 123-4567<br/>
+                  info@weepingsaints.com | +27 (79) 991-5716<br/>
                   www.weepingsaints.com
                 </div>
               </div>
@@ -229,16 +229,16 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                   <tr>
                     <td>${item.description}</td>
                     <td style="text-align: center;">${item.quantity}</td>
-                    <td style="text-align: right;">$${item.rate.toFixed(2)}</td>
-                    <td style="text-align: right;">$${(item.quantity * item.rate).toFixed(2)}</td>
+                    <td style="text-align: right;">R${item.rate.toFixed(2)}</td>
+                    <td style="text-align: right;">R${(item.quantity * item.rate).toFixed(2)}</td>
                   </tr>
                 `).join('')}
               </tbody>
             </table>
             
             <div class="total-section">
-              <div>Subtotal: $${currentInvoice.subtotal.toFixed(2)}</div>
-              <div class="total-amount">Total: $${currentInvoice.total.toFixed(2)}</div>
+              <div>Subtotal: R${currentInvoice.subtotal.toFixed(2)}</div>
+              <div class="total-amount">Total: R${currentInvoice.total.toFixed(2)}</div>
             </div>
             
             ${currentInvoice.paymentTerms ? `
