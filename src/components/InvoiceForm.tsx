@@ -177,7 +177,7 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
             <div className="col-span-1">
               {index === 0 && <Label className="text-xs mb-1 block">Amount</Label>}
               <div className="h-10 flex items-center text-[#f5a623]">
-                ${(item.quantity * item.rate).toFixed(2)}
+                R{(item.quantity * item.rate).toFixed(2)}
               </div>
             </div>
             <div className="col-span-1">
@@ -199,7 +199,7 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
         <div className="flex justify-end pt-4 border-t border-[#2d3b4e]">
           <div className="text-right">
             <div className="text-gray-400">Subtotal</div>
-            <div className="text-2xl text-[#f5a623]">${calculateSubtotal().toFixed(2)}</div>
+            <div className="text-2xl text-[#f5a623]">R{calculateSubtotal().toFixed(2)}</div>
           </div>
         </div>
       </div>
