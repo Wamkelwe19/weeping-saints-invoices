@@ -163,7 +163,7 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
               />
             </div>
             <div className="col-span-2">
-              {index === 0 && <Label className="text-xs mb-1 block">Rate ($)</Label>}
+              {index === 0 && <Label className="text-xs mb-1 block">Rate (R)</Label>}
               <Input
                 type="number"
                 value={item.rate}
