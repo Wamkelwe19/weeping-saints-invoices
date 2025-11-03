@@ -473,6 +473,16 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                 <div className="text-base whitespace-pre-line">{currentInvoice.notes}</div>
               </div>
             )}
+              {/* Payment Terms */}
+            {currentInvoice.paymentTerms && (
+              <div className="mb-4 p-4 bg-gray-50 border-l-4 border-[#f5a623]">
+                <div className="text-sm text-gray-600 font-medium mb-1">Payment Details:</div>
+                <div className="text-base">Abas Bank</div>
+                 <div className="text-base">9320233720</div>
+                   <div className="text-base">632005</div>
+                  <div className="text-base">Siyanda Mthembu</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
