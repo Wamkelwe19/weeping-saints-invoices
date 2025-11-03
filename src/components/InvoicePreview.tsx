@@ -27,6 +27,11 @@ interface Invoice {
   notes?: string;
   createdAt?: string;
   updatedAt?: string;
+  // New bank fields
+  bankName?: string;
+  accountNumber?: string;
+  accountOwner?: string;
+  branchCode?: string;
 }
 
 // Invoice Preview Component - Fixed all issues
@@ -173,6 +178,13 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                 border-left: 4px solid #f5a623;
                 font-size: 14px;
               }
+              .bank-details {
+                margin-top: 20px;
+                padding: 12px;
+                background: #fffbe6;
+                border-left: 4px solid #f5a623;
+                font-size: 14px;
+              }
             </style>
           </head>
           <body>
@@ -247,7 +259,17 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                 ${currentInvoice.paymentTerms}
               </div>
             ` : ''}
-            
+
+            ${ (currentInvoice.bankName || currentInvoice.accountNumber || currentInvoice.accountOwner || currentInvoice.branchCode) ? `
+              <div class="bank-details">
+                <strong>Bank Details</strong><br/>
+                ${currentInvoice.bankName ? `<div><strong>Bank:</strong> ${currentInvoice.bankName}</div>` : ''}
+                ${currentInvoice.accountNumber ? `<div><strong>Account Number:</strong> ${currentInvoice.accountNumber}</div>` : ''}
+                ${currentInvoice.accountOwner ? `<div><strong>Account Owner:</strong> ${currentInvoice.accountOwner}</div>` : ''}
+                ${currentInvoice.branchCode ? `<div><strong>Branch Code:</strong> ${currentInvoice.branchCode}</div>` : ''}
+              </div>
+            ` : ''}
+
             ${currentInvoice.notes ? `
               <div class="notes" style="margin-top: 20px;">
                 <strong>Notes:</strong><br/>
@@ -369,7 +391,7 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
               </div>
             </div>
 
-            {/* Invoice Title with Status */}
+            {/* Invoice Title with Status */} 
             <div className="mb-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-3xl text-[#f5a623] font-bold">INVOICE</h2>
@@ -466,6 +488,19 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
               </div>
             )}
 
+            {/* Bank Details (new) */}
+            {(currentInvoice.bankName || currentInvoice.accountNumber || currentInvoice.accountOwner || currentInvoice.branchCode) && (
+              <div className="mb-4 p-4 bg-gray-50 border-l-4 border-[#f5a623]">
+                <div className="text-sm text-gray-600 font-medium mb-1">Bank Details:</div>
+                <div className="text-base">
+                  {currentInvoice.bankName && <div><strong>Bank:</strong> {currentInvoice.bankName}</div>}
+                  {currentInvoice.accountNumber && <div><strong>Account Number:</strong> {currentInvoice.accountNumber}</div>}
+                  {currentInvoice.accountOwner && <div><strong>Account Owner:</strong> {currentInvoice.accountOwner}</div>}
+                  {currentInvoice.branchCode && <div><strong>Branch Code:</strong> {currentInvoice.branchCode}</div>}
+                </div>
+              </div>
+            )}
+
             {/* Notes */}
             {currentInvoice.notes && (
               <div className="p-4 bg-gray-50 border-l-4 border-[#f5a623]">
@@ -473,16 +508,7 @@ export function InvoicePreview({ invoice, onClose, onStatusChange, isNewlyCreate
                 <div className="text-base whitespace-pre-line">{currentInvoice.notes}</div>
               </div>
             )}
-              {/* Payment Terms */}
-            {currentInvoice.paymentTerms && (
-              <div className="mb-4 p-4 bg-gray-50 border-l-4 border-[#f5a623]">
-                <div className="text-sm text-gray-600 font-medium mb-1">Payment Details:</div>
-                <div className="text-base">Abas Bank</div>
-                 <div className="text-base">9320233720</div>
-                   <div className="text-base">632005</div>
-                  <div className="text-base">Siyanda Mthembu</div>
-              </div>
-            )}
+            
           </div>
         </div>
       </div>

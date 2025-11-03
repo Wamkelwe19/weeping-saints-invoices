@@ -28,7 +28,10 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
   ]);
   const [notes, setNotes] = useState('');
   const [paymentTerms, setPaymentTerms] = useState('Payment due within 30 days');
-
+   const [bankName, setBankName] = useState('Abas Bank');
+  const [accountNumber, setAccountNumber] = useState('9320233720');
+  const [accountOwner, setAccountOwner] = useState('Siyanda Mthembu');
+  const [branchCode, setBranchCode] = useState('632005');
   const addLineItem = () => {
     setLineItems([...lineItems, { id: crypto.randomUUID(), description: '', quantity: 1, rate: 0 }]);
   };
@@ -63,7 +66,12 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
       paymentTerms,
       subtotal: calculateSubtotal(),
       total: calculateSubtotal(),
-      status: 'draft'
+      status: 'draft',
+      // include bank details
+      bankName,
+      accountNumber,
+      accountOwner,
+      branchCode,
     };
     
     onSubmit(invoice);
@@ -213,7 +221,48 @@ export function InvoiceForm({ onSubmit, onCancel }: InvoiceFormProps) {
           className="bg-[#1a2332] border-[#2d3b4e] text-white"
         />
       </div>
-
+     {/* New Bank Details Section */}
+      <div className="p-4 bg-[#0f1724] border border-[#2d3b4e] rounded-md space-y-3">
+        <div className="text-sm text-gray-300 font-medium">Bank Details (Shown on invoice)</div>
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <Label htmlFor="bankName">Bank Name</Label>
+            <Input
+              id="bankName"
+              value={bankName}
+              onChange={(e) => setBankName(e.target.value)}
+              className="bg-[#1a2332] border-[#2d3b4e] text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="accountNumber">Account Number</Label>
+            <Input
+              id="accountNumber"
+              value={accountNumber}
+              onChange={(e) => setAccountNumber(e.target.value)}
+              className="bg-[#1a2332] border-[#2d3b4e] text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="accountOwner">Account Owner</Label>
+            <Input
+              id="accountOwner"
+              value={accountOwner}
+              onChange={(e) => setAccountOwner(e.target.value)}
+              className="bg-[#1a2332] border-[#2d3b4e] text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="branchCode">Branch Code</Label>
+            <Input
+              id="branchCode"
+              value={branchCode}
+              onChange={(e) => setBranchCode(e.target.value)}
+              className="bg-[#1a2332] border-[#2d3b4e] text-white"
+            />
+          </div>
+        </div>
+      </div>
       <div>
         <Label htmlFor="notes">Notes</Label>
         <Textarea
